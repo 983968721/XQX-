@@ -97,7 +97,7 @@ namespace Leblanc
             Config.AddSubMenu(new Menu("连招", "Combo"));
             {
                 Config.SubMenu("Combo").AddItem(new MenuItem("ComboSetOption", "组合").SetValue(new StringList(new[] {"自动", "Q-R 组合", "W-R 连击", "E-R 组合",}, 1)));
-                Config.SubMenu("Combo").AddItem(new MenuItem("ComboSetEHitCh", "E 打").SetValue(new StringList(new[] {"低", "中等", "高", "很高的", "不动的"}, 2)));
+                Config.SubMenu("Combo").AddItem(new MenuItem("ComboSetEHitCh", "E命中率").SetValue(new StringList(new[] {"低", "中等", "高", "很高的", "不动的"}, 2)));
                 Config.SubMenu("Combo").AddSubMenu(new Menu("不使用连招", "DontCombo"));
                 {
                     foreach (var enemy in ObjectManager.Get<Obj_AI_Hero>().Where(enemy => enemy.Team != ObjectManager.Player.Team))
