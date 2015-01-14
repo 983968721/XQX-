@@ -15,38 +15,38 @@ namespace Leblanc
 
         private static void Load()
         {
-            Program.Config.AddSubMenu(new Menu("Assassin Manager", "MenuAssassin"));
-            Program.Config.SubMenu("MenuAssassin").AddItem(new MenuItem("AssassinActive", "Active").SetValue(true));
+            Program.Config.AddSubMenu(new Menu("刺客 经理", "MenuAssassin"));
+            Program.Config.SubMenu("MenuAssassin").AddItem(new MenuItem("AssassinActive", "活跃的").SetValue(true));
             Program.Config.SubMenu("MenuAssassin").AddItem(new MenuItem("Ax", ""));
             Program.Config.SubMenu("MenuAssassin")
                 .AddItem(
                     new MenuItem("AssassinSelectOption", "Set: ").SetValue(
-                        new StringList(new[] { "Single Select", "Multi Select" })));
+                        new StringList(new[] { "单一的选择", "多选择" })));
             Program.Config.SubMenu("MenuAssassin").AddItem(new MenuItem("Ax", ""));
             Program.Config.SubMenu("MenuAssassin")
-                .AddItem(new MenuItem("AssassinSetClick", "Add/Remove with click").SetValue(true));
+                .AddItem(new MenuItem("AssassinSetClick", "添加/删除点击").SetValue(true));
             Program.Config.SubMenu("MenuAssassin")
                 .AddItem(
-                    new MenuItem("AssassinReset", "Reset List").SetValue(
+                    new MenuItem("AssassinReset", "重置列表").SetValue(
                         new KeyBind("T".ToCharArray()[0], KeyBindType.Press)));
 
-            Program.Config.SubMenu("MenuAssassin").AddSubMenu(new Menu("Draw:", "Draw"));
+            Program.Config.SubMenu("MenuAssassin").AddSubMenu(new Menu("范围:", "Draw"));
 
             Program.Config.SubMenu("MenuAssassin")
                 .SubMenu("Draw")
-                .AddItem(new MenuItem("DrawSearch", "Search Range").SetValue(new Circle(true, Color.GreenYellow)));
+                .AddItem(new MenuItem("DrawSearch", "搜索范围").SetValue(new Circle(true, Color.GreenYellow)));
             Program.Config.SubMenu("MenuAssassin")
                 .SubMenu("Draw")
-                .AddItem(new MenuItem("DrawActive", "Active Enemy").SetValue(new Circle(true, Color.GreenYellow)));
+                .AddItem(new MenuItem("DrawActive", "活跃的敌人").SetValue(new Circle(true, Color.GreenYellow)));
             Program.Config.SubMenu("MenuAssassin")
                 .SubMenu("Draw")
-                .AddItem(new MenuItem("DrawNearest", "Nearest Enemy").SetValue(new Circle(true, Color.DarkSeaGreen)));
+                .AddItem(new MenuItem("DrawNearest", "最近的敌人").SetValue(new Circle(true, Color.DarkSeaGreen)));
             Program.Config.SubMenu("MenuAssassin")
                 .SubMenu("Draw")
-                .AddItem(new MenuItem("DrawStatus", "Show Status").SetValue(true));
+                .AddItem(new MenuItem("DrawStatus", "显示状态").SetValue(true));
 
 
-            Program.Config.SubMenu("MenuAssassin").AddSubMenu(new Menu("Assassin List:", "AssassinMode"));
+            Program.Config.SubMenu("MenuAssassin").AddSubMenu(new Menu("刺客名单:", "AssassinMode"));
             foreach (
                 var enemy in ObjectManager.Get<Obj_AI_Hero>().Where(enemy => enemy.Team != ObjectManager.Player.Team))
             {
@@ -57,7 +57,7 @@ namespace Leblanc
                             TargetSelector.GetPriority(enemy) > 3));
             }
             Program.Config.SubMenu("MenuAssassin")
-                .AddItem(new MenuItem("AssassinSearchRange", "Search Range"))
+                .AddItem(new MenuItem("AssassinSearchRange", "搜索范围"))
                 .SetValue(new Slider(1000, 2000));
 
             Game.OnGameUpdate += OnGameUpdate;
@@ -125,7 +125,7 @@ namespace Leblanc
                                     string.Format(
                                         "<font color='{0}'>{1}</font> <font color='#09F000'>{2} ({3})</font>",
                                         !menuStatus ? "#FFFFFF" : "#FF8877",
-                                        !menuStatus ? "Added to Assassin List:" : "Removed from Assassin List:",
+                                        !menuStatus ? "加入暗杀名单：" : "从暗杀名单中删除：",
                                         objAiHero.Name, objAiHero.ChampionName));
                                 break;
                         }
