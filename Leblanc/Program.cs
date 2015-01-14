@@ -82,19 +82,19 @@ namespace Leblanc
 
             Config = new Menu(ChampionName, ChampionName, true);
             {
-                Config.AddSubMenu(new Menu("Orbwalking", "Orbwalking"));
+                Config.AddSubMenu(new Menu("走砍", "Orbwalking"));
             }
 
             Orbwalker = new Orbwalking.Orbwalker(Config.SubMenu("Orbwalking"));
 
-            var menuTargetSelector = new Menu("Target Selector", "TargetSelector");
+            var menuTargetSelector = new Menu("目标 选择", "TargetSelector");
             {
                 TargetSelector.AddToMenu(menuTargetSelector);
                 Config.AddSubMenu(menuTargetSelector);
             }
             new AssassinManager();
 
-            Config.AddSubMenu(new Menu("Combo", "Combo"));
+            Config.AddSubMenu(new Menu("连招", "Combo"));
             {
                 Config.SubMenu("Combo").AddItem(new MenuItem("ComboSetOption", "组合").SetValue(new StringList(new[] {"自动", "Q-R 组合", "W-R 连击", "E-R 组合",}, 1)));
                 Config.SubMenu("Combo").AddItem(new MenuItem("ComboSetEHitCh", "E 打").SetValue(new StringList(new[] {"低", "中等", "高", "很高的", "不动的"}, 2)));
@@ -187,32 +187,32 @@ namespace Leblanc
                             new KeyBind("V".ToCharArray()[0], KeyBindType.Press)));
             }
 
-            var menuRun = new Menu("Run", "Run");
+            var menuRun = new Menu("逃跑", "Run");
             {
                 menuRun.AddItem(new MenuItem("RunUseW", "使用 W").SetValue(true));
                 menuRun.AddItem(new MenuItem("RunUseR", "使用 R").SetValue(true));
                 menuRun.AddItem(
-                    new MenuItem("RunActive", "Run!").SetValue(new KeyBind("A".ToCharArray()[0], KeyBindType.Press)));
+                    new MenuItem("RunActive", "逃跑").SetValue(new KeyBind("A".ToCharArray()[0], KeyBindType.Press)));
                 Config.AddSubMenu(menuRun);
             }
 
             MenuExtras = new Menu("Extras", "Extras");
             {
                 Config.AddSubMenu(MenuExtras);
-                MenuExtras.AddItem(new MenuItem("InterruptSpells", "Interrupt Spells").SetValue(true));
+                MenuExtras.AddItem(new MenuItem("InterruptSpells", "打断法术").SetValue(true));
                 new PotionManager();
             }
 
-            Config.AddSubMenu(new Menu("Drawings", "Drawings"));
+            Config.AddSubMenu(new Menu("技能范围", "Drawings"));
             {
                 Config.SubMenu("Drawings")
-                    .AddItem(new MenuItem("QRange", "Q Range").SetValue(new Circle(false, Color.Honeydew)));
+                    .AddItem(new MenuItem("QRange", "Q 范围").SetValue(new Circle(false, Color.Honeydew)));
                 Config.SubMenu("Drawings")
-                    .AddItem(new MenuItem("WRange", "W Range").SetValue(new Circle(true, Color.Honeydew)));
+                    .AddItem(new MenuItem("WRange", "W 范围").SetValue(new Circle(true, Color.Honeydew)));
                 Config.SubMenu("Drawings")
-                    .AddItem(new MenuItem("ERange", "E Range").SetValue(new Circle(false, Color.Honeydew)));
+                    .AddItem(new MenuItem("ERange", "E 范围").SetValue(new Circle(false, Color.Honeydew)));
                 Config.SubMenu("Drawings")
-                    .AddItem(new MenuItem("RRange", "R Range").SetValue(new Circle(false, Color.Honeydew)));
+                    .AddItem(new MenuItem("RRange", "R 范围").SetValue(new Circle(false, Color.Honeydew)));
 
                 Config.SubMenu("Drawings")
                     .AddItem(
