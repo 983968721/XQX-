@@ -79,7 +79,7 @@ namespace Leblanc
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("SAwarness: Couldn't load texture: " + name + "\n Ex: " + ex);
+                    Console.WriteLine("SAwarness: 不能加载纹理: " + name + "\n Ex: " + ex);
                 }
             }
         }
