@@ -15,7 +15,7 @@ namespace Leblanc
 
         private static void Load()
         {
-            Program.Config.AddSubMenu(new Menu("刺客 经理", "MenuAssassin"));
+            Program.Config.AddSubMenu(new Menu("选择 秒杀", "MenuAssassin"));
             Program.Config.SubMenu("MenuAssassin").AddItem(new MenuItem("AssassinActive", "活跃的").SetValue(true));
             Program.Config.SubMenu("MenuAssassin").AddItem(new MenuItem("Ax", ""));
             Program.Config.SubMenu("MenuAssassin")
