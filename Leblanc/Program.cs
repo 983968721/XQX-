@@ -96,21 +96,21 @@ namespace Leblanc
 
             Config.AddSubMenu(new Menu("Combo", "Combo"));
             {
-                Config.SubMenu("Combo").AddItem(new MenuItem("ComboSetOption", "Combo").SetValue(new StringList(new[] {"Auto", "Q-R Combo", "W-R Combo", "E-R Combo",}, 1)));
-                Config.SubMenu("Combo").AddItem(new MenuItem("ComboSetEHitCh", "E Hit").SetValue(new StringList(new[] {"Low", "Medium", "High", "Very High", "Immobile"}, 2)));
-                Config.SubMenu("Combo").AddSubMenu(new Menu("Don't Use Combo on", "DontCombo"));
+                Config.SubMenu("Combo").AddItem(new MenuItem("ComboSetOption", "组合").SetValue(new StringList(new[] {"自动", "Q-R 组合", "W-R 连击", "E-R 组合",}, 1)));
+                Config.SubMenu("Combo").AddItem(new MenuItem("ComboSetEHitCh", "E 打").SetValue(new StringList(new[] {"低", "中等", "高", "很高的", "不动的"}, 2)));
+                Config.SubMenu("Combo").AddSubMenu(new Menu("不使用连招", "DontCombo"));
                 {
                     foreach (var enemy in ObjectManager.Get<Obj_AI_Hero>().Where(enemy => enemy.Team != ObjectManager.Player.Team))
                     {
                         Config.SubMenu("Combo").SubMenu("DontCombo").AddItem(new MenuItem("DontCombo" + enemy.BaseSkinName, enemy.BaseSkinName).SetValue(false));
                     }
                 }
-                Config.SubMenu("Combo").AddItem(new MenuItem("ComboDblStun", "Double Stun!").SetValue(new KeyBind("T".ToCharArray()[0], KeyBindType.Press)));
-                Config.SubMenu("Combo").AddItem(new MenuItem("ComboShowInfo", "Show Combo Status").SetValue(true));
-                Config.SubMenu("Combo").AddItem(new MenuItem("ComboActive", "Combo!").SetValue(new KeyBind(Config.Item("Orbwalk").GetValue<KeyBind>().Key, KeyBindType.Press)));
+                Config.SubMenu("Combo").AddItem(new MenuItem("ComboDblStun", "双晕!").SetValue(new KeyBind("T".ToCharArray()[0], KeyBindType.Press)));
+                Config.SubMenu("Combo").AddItem(new MenuItem("ComboShowInfo", "显示的组合状态").SetValue(true));
+                Config.SubMenu("Combo").AddItem(new MenuItem("ComboActive", "组合！").SetValue(new KeyBind(Config.Item("Orbwalk").GetValue<KeyBind>().Key, KeyBindType.Press)));
             }
 
-            Config.AddSubMenu(new Menu("Harass", "Harass"));
+            Config.AddSubMenu(new Menu("骚扰", "Harass"));
             {
                 /*
                 {
@@ -145,52 +145,52 @@ namespace Leblanc
                 Config.SubMenu("Harass").AddItem(new MenuItem("xHx", ""));
 */
                 Config.SubMenu("Harass").AddSubMenu(new Menu("Q", "HarassQ"));
-                    Config.SubMenu("Harass").SubMenu("HarassQ").AddItem(new MenuItem("HarassUseQ", "Use Q").SetValue(true));
-                    Config.SubMenu("Harass").SubMenu("HarassQ").AddItem(new MenuItem("HarassManaQ", "Q Min. Mana Percent: ").SetValue(new Slider(50, 100, 0)));
-                    Config.SubMenu("Harass").SubMenu("HarassQ").AddItem(new MenuItem("HarassUseTQ", "Use Q (toggle)!").SetValue(new KeyBind("J".ToCharArray()[0], KeyBindType.Toggle)));
+                    Config.SubMenu("Harass").SubMenu("HarassQ").AddItem(new MenuItem("HarassUseQ", "使用 Q").SetValue(true));
+                    Config.SubMenu("Harass").SubMenu("HarassQ").AddItem(new MenuItem("HarassManaQ", "Q分钟法力百分比： ").SetValue(new Slider(50, 100, 0)));
+                    Config.SubMenu("Harass").SubMenu("HarassQ").AddItem(new MenuItem("HarassUseTQ", "使用Q（切换）！").SetValue(new KeyBind("J".ToCharArray()[0], KeyBindType.Toggle)));
                 Config.SubMenu("Harass").AddSubMenu(new Menu("W", "HarassW"));
-                    Config.SubMenu("Harass").SubMenu("HarassW").AddItem(new MenuItem("HarassUseW", "Use W").SetValue(true));
-                    Config.SubMenu("Harass").SubMenu("HarassW").AddItem(new MenuItem("HarassManaW", "W Min. Mana Percent: ").SetValue(new Slider(50, 100, 0)));
-                    Config.SubMenu("Harass").SubMenu("HarassW").AddItem(new MenuItem("HarassUseTW", "Use W (toggle)!").SetValue(new KeyBind("K".ToCharArray()[0], KeyBindType.Toggle)));
+                    Config.SubMenu("Harass").SubMenu("HarassW").AddItem(new MenuItem("HarassUseW", "使用 W").SetValue(true));
+                    Config.SubMenu("Harass").SubMenu("HarassW").AddItem(new MenuItem("HarassManaW", "W分钟法力百分比： ").SetValue(new Slider(50, 100, 0)));
+                    Config.SubMenu("Harass").SubMenu("HarassW").AddItem(new MenuItem("HarassUseTW", "使用 W（切换）！").SetValue(new KeyBind("K".ToCharArray()[0], KeyBindType.Toggle)));
                 Config.SubMenu("Harass").AddSubMenu(new Menu("E", "HarassE"));
-                    Config.SubMenu("Harass").SubMenu("HarassE").AddItem(new MenuItem("HarassUseE", "Use E").SetValue(true));
-                    Config.SubMenu("Harass").SubMenu("HarassE").AddItem(new MenuItem("HarassManaE", "E Min. Mana Percent: ").SetValue(new Slider(50, 100, 0)));
-                    Config.SubMenu("Harass").SubMenu("HarassE").AddItem(new MenuItem("HarassUseTE", "Use E (toggle)!").SetValue(new KeyBind("L".ToCharArray()[0], KeyBindType.Toggle)));
+                    Config.SubMenu("Harass").SubMenu("HarassE").AddItem(new MenuItem("HarassUseE", "使用 E").SetValue(true));
+                    Config.SubMenu("Harass").SubMenu("HarassE").AddItem(new MenuItem("HarassManaE", "E分钟法力百分比： ").SetValue(new Slider(50, 100, 0)));
+                    Config.SubMenu("Harass").SubMenu("HarassE").AddItem(new MenuItem("HarassUseTE", "用E（切换）！").SetValue(new KeyBind("L".ToCharArray()[0], KeyBindType.Toggle)));
                 
-                Config.SubMenu("Harass").AddItem(new MenuItem("HarassShowInfo", "Show Harass Toggle Status").SetValue(true));
-                Config.SubMenu("Harass").AddItem(new MenuItem("HarassActive", "Harass!").SetValue(new KeyBind("C".ToCharArray()[0], KeyBindType.Press)));
+                Config.SubMenu("Harass").AddItem(new MenuItem("HarassShowInfo", "显示切换状态的骚扰").SetValue(true));
+                Config.SubMenu("Harass").AddItem(new MenuItem("HarassActive", "骚扰！").SetValue(new KeyBind("C".ToCharArray()[0], KeyBindType.Press)));
             }
 
-            Config.AddSubMenu(new Menu("Lane Clear", "LaneClear"));
+            Config.AddSubMenu(new Menu("清线", "LaneClear"));
             {
-                Config.SubMenu("LaneClear").AddItem(new MenuItem("LaneClearUseQ", "Use Q").SetValue(false));
-                Config.SubMenu("LaneClear").AddItem(new MenuItem("LaneClearUseW", "Use W").SetValue(false));
-                Config.SubMenu("LaneClear").AddItem(new MenuItem("LaneClearUseE", "Use E").SetValue(false));
+                Config.SubMenu("LaneClear").AddItem(new MenuItem("LaneClearUseQ", "使用 Q").SetValue(false));
+                Config.SubMenu("LaneClear").AddItem(new MenuItem("LaneClearUseW", "使用 W").SetValue(false));
+                Config.SubMenu("LaneClear").AddItem(new MenuItem("LaneClearUseE", "使用 E").SetValue(false));
                 Config.SubMenu("LaneClear")
-                    .AddItem(new MenuItem("LaneClearMana", "Min. Mana Percent: ").SetValue(new Slider(50, 100, 0)));
+                    .AddItem(new MenuItem("LaneClearMana", "至少百分之法力： ").SetValue(new Slider(50, 100, 0)));
                 Config.SubMenu("LaneClear")
                     .AddItem(
-                        new MenuItem("LaneClearActive", "Harass!").SetValue(
+                        new MenuItem("LaneClearActive", "骚扰！").SetValue(
                             new KeyBind("V".ToCharArray()[0], KeyBindType.Press)));
             }
 
-            Config.AddSubMenu(new Menu("JungleFarm", "JungleFarm"));
+            Config.AddSubMenu(new Menu("清野", "JungleFarm"));
             {
-                Config.SubMenu("JungleFarm").AddItem(new MenuItem("JungleFarmUseQ", "Use Q").SetValue(true));
-                Config.SubMenu("JungleFarm").AddItem(new MenuItem("JungleFarmUseW", "Use W").SetValue(true));
-                Config.SubMenu("JungleFarm").AddItem(new MenuItem("JungleFarmUseE", "Use E").SetValue(true));
+                Config.SubMenu("JungleFarm").AddItem(new MenuItem("JungleFarmUseQ", "使用 Q").SetValue(true));
+                Config.SubMenu("JungleFarm").AddItem(new MenuItem("JungleFarmUseW", "使用 W").SetValue(true));
+                Config.SubMenu("JungleFarm").AddItem(new MenuItem("JungleFarmUseE", "使用 E").SetValue(true));
                 Config.SubMenu("JungleFarm")
-                    .AddItem(new MenuItem("JungleFarmMana", "Min. Mana Percent: ").SetValue(new Slider(50, 100, 0)));
+                    .AddItem(new MenuItem("JungleFarmMana", "至少百分之法力： ").SetValue(new Slider(50, 100, 0)));
                 Config.SubMenu("JungleFarm")
                     .AddItem(
-                        new MenuItem("JungleFarmActive", "Harass!").SetValue(
+                        new MenuItem("JungleFarmActive", "骚扰！").SetValue(
                             new KeyBind("V".ToCharArray()[0], KeyBindType.Press)));
             }
 
             var menuRun = new Menu("Run", "Run");
             {
-                menuRun.AddItem(new MenuItem("RunUseW", "Use W").SetValue(true));
-                menuRun.AddItem(new MenuItem("RunUseR", "Use R").SetValue(true));
+                menuRun.AddItem(new MenuItem("RunUseW", "使用 W").SetValue(true));
+                menuRun.AddItem(new MenuItem("RunUseR", "使用 R").SetValue(true));
                 menuRun.AddItem(
                     new MenuItem("RunActive", "Run!").SetValue(new KeyBind("A".ToCharArray()[0], KeyBindType.Press)));
                 Config.AddSubMenu(menuRun);
