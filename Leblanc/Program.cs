@@ -216,14 +216,14 @@ namespace Leblanc
 
                 Config.SubMenu("Drawings")
                     .AddItem(
-                        new MenuItem("ActiveERange", "Active E Range").SetValue(new Circle(false, Color.GreenYellow)));
+                        new MenuItem("ActiveERange", "主动测距").SetValue(new Circle(false, Color.GreenYellow)));
                 Config.SubMenu("Drawings")
                     .AddItem(new MenuItem("WObjPosition", "W Obj. Pos.").SetValue(new Circle(true, Color.GreenYellow)));
                 Config.SubMenu("Drawings").AddItem(new MenuItem("WObjTimeTick", "W Obj. Tick").SetValue(true));
                 Config.SubMenu("Drawings")
-                    .AddItem(new MenuItem("WQRange", "W+Q Range").SetValue(new Circle(false, Color.GreenYellow)));
+                    .AddItem(new MenuItem("WQRange", "W+Q 范围").SetValue(new Circle(false, Color.GreenYellow)));
 
-                var dmgAfterComboItem = new MenuItem("DamageAfterCombo", "Damage After Combo").SetValue(true);
+                var dmgAfterComboItem = new MenuItem("DamageAfterCombo", "损伤后的组合").SetValue(true);
                 Config.SubMenu("Drawings").AddItem(dmgAfterComboItem);
 
                 Utility.HpBarDamageIndicator.DamageToUnit = GetComboDamage;
@@ -756,11 +756,11 @@ namespace Leblanc
                 Game.PrintChat(slide.Position.ToString());
                 Render.Circle.DrawCircle(slide.Position, 400f, Color.Red);
 
-                Game.PrintChat("Slide Pos. Enemy Count: " + onSlidePositionEnemyCount);
-                Game.PrintChat("ObjectManager.Player Pos. Enemy Count: " + onPlayerPositionEnemyCount);
+                Game.PrintChat("滑块位置的敌人数： " + onSlidePositionEnemyCount);
+                Game.PrintChat("对象管理器。队友位置的敌人数： " + onPlayerPositionEnemyCount);
 
-                Game.PrintChat("W Posision : " + existingSlide.Position);
-                Game.PrintChat("Target Position : " + vTarget.Position);
+                Game.PrintChat("W位置： " + existingSlide.Position);
+                Game.PrintChat("目标位置： " + vTarget.Position);
             }
         }
 
@@ -884,7 +884,7 @@ namespace Leblanc
             
             var t = TargetSelector.GetTarget(W.Range*2, TargetSelector.DamageType.Physical);
             {
-                var xComboText = "Combo Kill";
+                var xComboText = "连击杀死";
                 if (t.IsValidTarget(W.Range))
                 {
                     if (t.Health < GetComboDamage(t))
@@ -942,7 +942,7 @@ namespace Leblanc
 
             if (Config.SubMenu("Combo").Item("ComboShowInfo").GetValue<bool>())
             {
-                var xComboStr = "Combo Mode: ";
+                var xComboStr = "组合模式： ";
                 var xCombo = Config.Item("ComboSetOption").GetValue<StringList>().SelectedIndex;
                 switch (xCombo)
                 {
@@ -978,11 +978,11 @@ namespace Leblanc
                     xHarassInfo += "E - ";
                 if (xHarassInfo.Length < 1)
                 {
-                    xHarassInfo = "Harass Toggle: OFF   ";
+                    xHarassInfo = "骚扰切换：关闭   ";
                 }
                 else
                 {
-                    xHarassInfo = "Harass Toggle: " + xHarassInfo;
+                    xHarassInfo = "骚扰切换： " + xHarassInfo;
                 }
                 xHarassInfo = xHarassInfo.Substring(0, xHarassInfo.Length - 3);
                 Drawing.DrawText(Drawing.Width*0.44f, Drawing.Height*0.82f, Color.Wheat, xHarassInfo);
