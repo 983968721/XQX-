@@ -68,23 +68,23 @@ namespace Leblanc
         private void Load()
         {
             _potions = _potions.OrderBy(x => x.Priority).ToList();
-            Program.MenuExtras.AddSubMenu(new Menu("Potion Manager", "PotionManager"));
+            Program.MenuExtras.AddSubMenu(new Menu("药水管理", "PotionManager"));
 
-            Program.MenuExtras.SubMenu("PotionManager").AddSubMenu(new Menu("Health", "Health"));
+            Program.MenuExtras.SubMenu("PotionManager").AddSubMenu(new Menu("生命", "Health"));
             Program.MenuExtras.SubMenu("PotionManager")
                 .SubMenu("Health")
-                .AddItem(new MenuItem("HealthPotion", "Use Health Potion").SetValue(true));
+                .AddItem(new MenuItem("HealthPotion", "使用生命药水").SetValue(true));
             Program.MenuExtras.SubMenu("PotionManager")
                 .SubMenu("Health")
-                .AddItem(new MenuItem("HealthPercent", "HP Trigger Percent").SetValue(new Slider(30)));
+                .AddItem(new MenuItem("HealthPercent", "以上的HP触发").SetValue(new Slider(30)));
 
-            Program.MenuExtras.SubMenu("PotionManager").AddSubMenu(new Menu("Mana", "Mana"));
+            Program.MenuExtras.SubMenu("PotionManager").AddSubMenu(new Menu("法力", "Mana"));
             Program.MenuExtras.SubMenu("PotionManager")
                 .SubMenu("Mana")
-                .AddItem(new MenuItem("ManaPotion", "Use Mana Potion").SetValue(true));
+                .AddItem(new MenuItem("ManaPotion", "使用法力药水").SetValue(true));
             Program.MenuExtras.SubMenu("PotionManager")
                 .SubMenu("Mana")
-                .AddItem(new MenuItem("ManaPercent", "MP Trigger Percent").SetValue(new Slider(30)));
+                .AddItem(new MenuItem("ManaPercent", "以上的MP触发").SetValue(new Slider(30)));
 
             Game.OnGameUpdate += OnGameUpdate;
         }
